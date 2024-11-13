@@ -1,1 +1,2 @@
-robert makes a monkey diefloat a = 7;
+void setup(){
+ size(800,600); 
