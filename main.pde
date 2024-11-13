@@ -1,5 +1,5 @@
-<<<<<<< Updated upstream
-println("Hello world");
-=======
-println("hello world");
->>>>>>> Stashed changes
+void setup(){
+ size(800,600); 
+  
+  
+}
