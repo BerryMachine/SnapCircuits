@@ -11,7 +11,8 @@ class Component{
   
   void drawMe(){
     fill(100,100,100);
-    square(this.size, position.x, position.y);
+    square(this.position.x, position.y, size);
   }
-
+  
+  
 }
