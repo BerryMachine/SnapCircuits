@@ -14,28 +14,28 @@ void mouseMoved () {
   
 }
 
-void mouseDragged(){
+//void mouseDragged(){
 
-    if(dragging == true){
-      c = components.get(i);
-      c.position.x = mouseX;
-      c.position.y = mouseY;
-   }else{
-     for(int i = components.size()-1; i>=0; i--){
-      Component c = components.get(i);
+//    if(dragging == true){
+//      c = components.get(i);
+//      c.position.x = mouseX;
+//      c.position.y = mouseY;
+//   }else{
+//     for(int i = components.size()-1; i>=0; i--){
+//      Component c = components.get(i);
 
-      if(c.position.x-c.size/2<mouseX && c.position.x+c.size/2>mouseX && c.position.y-c.size/2<mouseY && c.position.y+c.size/2>mouseY){
-        c.position.x = mouseX;
-        c.position.y = mouseY;
-        dragging = true;
+//      if(c.position.x-c.size/2<mouseX && c.position.x+c.size/2>mouseX && c.position.y-c.size/2<mouseY && c.position.y+c.size/2>mouseY){
+//        c.position.x = mouseX;
+//        c.position.y = mouseY;
+//        dragging = true;
 
-        break;
-      }
+//        break;
+//      }
       
-    }
-   }
+//    }
+//   }
     
-}
+//}
 
 void mouseClicked(){
   if(creating == true){
