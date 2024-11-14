@@ -1,3 +1,6 @@
+
+
+
 class Component{
   String type;
   PVector position;
