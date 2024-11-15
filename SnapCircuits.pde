@@ -12,6 +12,7 @@ ArrayList<PVector> grid_points;
 PVector closest_point;
 boolean creating = false;
 Wire line;
+String create_component_type;
 
 void setup () {
   size(800,800);
@@ -31,7 +32,7 @@ void draw(){
 
   gridDraw(grid_points);
   
-  for(Component c: components){
+  for (Component c: selected_layer) {
     c.drawMe();
   }
   
