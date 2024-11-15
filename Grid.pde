@@ -13,8 +13,17 @@ void gridDraw (ArrayList<PVector> grid_points) {
   }
 }
 
-void drawSquare (float x, float y) {
-  rectMode(CENTER);
-  fill(0);
-  square(x, y, 30);
+PVector getPoint (float x, float y) {
+  float smallest_dist = width;
+  
+  for (PVector point : grid_points) {
+    float dist = point.dist(new PVector(x, y));
+    
+    if (dist < smallest_dist) {
+      smallest_dist = dist;
+      closest_point = point;
+    }
+  }
+  
+  return closest_point;
 }
