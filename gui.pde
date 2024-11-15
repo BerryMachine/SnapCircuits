@@ -21,12 +21,12 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:windo
 public void addBatteryClicked(GButton source, GEvent event) { //_CODE_:addBattery:517943:
   //components.add(new Component("battery", 100,100,100));
   //components.get(components.size()-1).drawMe();
-  type = "battery";
+  create_component_type = "battery";
   creating = true;
 } //_CODE_:addBattery:517943:
 
 public void addWireClicked(GButton source, GEvent event) { //_CODE_:addWire:391999:
-  type = "wire";
+  create_component_type = "wire";
   creating = true;
 
 } //_CODE_:addWire:391999:
