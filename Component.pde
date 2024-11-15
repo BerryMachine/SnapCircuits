@@ -10,7 +10,8 @@ class Component{
   }
   
   void drawMe(){
-    fill(100,100,100);
+    rectMode(CENTER);
+    fill(100);
     square(this.position.x, position.y, size);
   }
   
