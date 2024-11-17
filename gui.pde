@@ -62,6 +62,10 @@ public void addLightbulbClicked(GButton source, GEvent event) { //_CODE_:addLigh
   creating = true;
 } //_CODE_:addLightbulb:988807:
 
+public void deleteClicked(GButton source, GEvent event) { //_CODE_:delete:448134:
+  deleting = true;
+} //_CODE_:delete:448134:
+
 
 
 // Create all the GUI controls. 
@@ -110,6 +114,9 @@ public void createGUI(){
   addLightbulb = new GButton(window1, 100, 215, 30, 30);
   addLightbulb.setText("+");
   addLightbulb.addEventHandler(this, "addLightbulbClicked");
+  delete = new GButton(window1, 10, 260, 150, 30);
+  delete.setText("DELETE COMPONENT");
+  delete.addEventHandler(this, "deleteClicked");
   window1.loop();
 }
 
@@ -126,3 +133,4 @@ GLabel label2;
 GLabel label3; 
 GLabel label4; 
 GButton addLightbulb; 
+GButton delete; 

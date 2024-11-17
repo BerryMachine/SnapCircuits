@@ -66,6 +66,11 @@ void mousePressed(){
        && c.position.y + c.size/2 > mouseY) {
           println("DAMN");
           selected_component = c;
+          if(deleting == true){
+              selected_layer.remove(c);
+              deleting = false;
+             }
+             
           break;
         }
       }else if(c.type == "lightbulb"){
@@ -75,6 +80,11 @@ void mousePressed(){
        && c.position.y + c.size/2 > mouseY) {
           println("DAMN");
           selected_component = c;
+          if(deleting == true){
+              selected_layer.remove(c);
+              deleting = false;
+             }
+             
           break;
         }
         
@@ -86,6 +96,12 @@ void mousePressed(){
        && c.position.y + 5 > mouseY){
             println("DAMN");
             selected_component = c;
+            
+            if(deleting == true){
+              selected_layer.remove(c);
+              deleting = false;
+             }
+             
             break;
            }
         }else{
@@ -95,6 +111,12 @@ void mousePressed(){
        && c.position.y + grid_size/2 > mouseY){
             println("DAMN");
             selected_component = c;
+            
+            if(deleting == true){
+              selected_layer.remove(c);
+              deleting = false;
+             }
+             
             break;
            }
         
@@ -102,7 +124,10 @@ void mousePressed(){
         
       }
       
+      
     }
+    
+    
   }
 }
 

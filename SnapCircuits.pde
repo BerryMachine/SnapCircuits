@@ -11,6 +11,7 @@ Component selected_component;
 ArrayList<PVector> grid_points;
 PVector closest_point;
 boolean creating = false;
+boolean deleting = false;
 Wire line;
 String create_component_type;
 boolean create_wire_orientation;
