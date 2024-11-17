@@ -55,7 +55,6 @@ void mousePressed(){
   } 
   
   else {
-    println(selected_layer.size());
     for(int i = selected_layer.size()-1; i>=0; i--){
       Component c = selected_layer.get(i);
       
@@ -64,7 +63,6 @@ void mousePressed(){
        && c.position.x + c.size/2 > mouseX
        && c.position.y - c.size/2 < mouseY
        && c.position.y + c.size/2 > mouseY) {
-          println("DAMN");
           selected_component = c;
           if(deleting == true){
               selected_layer.remove(c);
@@ -78,7 +76,6 @@ void mousePressed(){
        && c.position.x + c.size+5 > mouseX
        && c.position.y - c.size/2 < mouseY
        && c.position.y + c.size/2 > mouseY) {
-          println("DAMN");
           selected_component = c;
           if(deleting == true){
               selected_layer.remove(c);
@@ -94,7 +91,6 @@ void mousePressed(){
        && c.position.x + grid_size/2 > mouseX
        && c.position.y - 5 < mouseY
        && c.position.y + 5 > mouseY){
-            println("DAMN");
             selected_component = c;
             
             if(deleting == true){
@@ -109,7 +105,6 @@ void mousePressed(){
        && c.position.x + 5 > mouseX
        && c.position.y - grid_size/2 < mouseY
        && c.position.y + grid_size/2 > mouseY){
-            println("DAMN");
             selected_component = c;
             
             if(deleting == true){
