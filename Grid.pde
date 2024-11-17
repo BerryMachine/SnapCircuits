@@ -8,6 +8,8 @@ void gridSetup (int size) {
 
 void gridDraw (ArrayList<PVector> grid_points) {
   for (PVector point : grid_points) {
+    stroke(50);
+    strokeWeight(1);
     fill(50);
     circle(point.x, point.y, 2);
   }
