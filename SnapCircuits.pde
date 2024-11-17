@@ -15,6 +15,7 @@ boolean deleting = false;
 Wire line;
 String create_component_type;
 boolean create_wire_orientation;
+boolean gridShowing = true;
 
 void setup () {
   size(800,800);
@@ -32,7 +33,10 @@ void setup () {
 void draw(){
   background(100);
 
-  gridDraw(grid_points);
+  if(gridShowing){
+    gridDraw(grid_points);
+
+  }
   
   for (Component c: selected_layer) {
     c.drawMe();

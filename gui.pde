@@ -40,7 +40,6 @@ public void addVertWireClicked(GButton source, GEvent event) { //_CODE_:addVertW
 } //_CODE_:addVertWire:837893:
 
 public void selectLayerPicked(GDropList source, GEvent event) { //_CODE_:selectLayer:676007:
-  println(selectLayer.getSelectedText());
   if(selectLayer.getSelectedText().contains("1")){
     selected_layer = layer_1;
 
@@ -66,6 +65,19 @@ public void deleteClicked(GButton source, GEvent event) { //_CODE_:delete:448134
   deleting = true;
 } //_CODE_:delete:448134:
 
+public void showGridClicked(GCheckbox source, GEvent event) { //_CODE_:showGrid:970966:
+  if(showGrid.isSelected()){
+    gridShowing = true;
+    
+  }else{
+    gridShowing = false;
+  }
+} //_CODE_:showGrid:970966:
+
+public void clearClicked(GButton source, GEvent event) { //_CODE_:clear:830938:
+  selected_layer.clear();
+} //_CODE_:clear:830938:
+
 
 
 // Create all the GUI controls. 
@@ -75,48 +87,57 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
-  window1 = GWindow.getWindow(this, "Window title", 0, 0, 300, 300, JAVA2D);
+  window1 = GWindow.getWindow(this, "Window title", 0, 0, 350, 350, JAVA2D);
   window1.noLoop();
   window1.setActionOnClose(G4P.KEEP_OPEN);
   window1.addDrawHandler(this, "win_draw1");
-  addBattery = new GButton(window1, 100, 60, 30, 30);
+  addBattery = new GButton(window1, 100, 100, 30, 30);
   addBattery.setText("+");
   addBattery.addEventHandler(this, "addBatteryClicked");
-  addHorizontalWire = new GButton(window1, 100, 110, 30, 30);
+  addHorizontalWire = new GButton(window1, 100, 150, 30, 30);
   addHorizontalWire.setText("+");
   addHorizontalWire.addEventHandler(this, "addHorizontalWireClicked");
-  addVertWire = new GButton(window1, 100, 170, 30, 30);
+  addVertWire = new GButton(window1, 100, 210, 30, 30);
   addVertWire.setText("+");
   addVertWire.addEventHandler(this, "addVertWireClicked");
-  selectLayer = new GDropList(window1, 100, 20, 50, 120, 5, 10);
+  selectLayer = new GDropList(window1, 100, 60, 50, 120, 5, 10);
   selectLayer.setItems(loadStrings("list_676007"), 0);
   selectLayer.addEventHandler(this, "selectLayerPicked");
-  batteryLabel = new GLabel(window1, 10, 60, 80, 20);
+  batteryLabel = new GLabel(window1, 10, 105, 80, 20);
   batteryLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   batteryLabel.setText("Add Battery");
   batteryLabel.setOpaque(false);
-  label1 = new GLabel(window1, 10, 100, 80, 50);
+  label1 = new GLabel(window1, 10, 140, 80, 50);
   label1.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label1.setText("Add Horizontal Wire");
   label1.setOpaque(false);
-  label2 = new GLabel(window1, 10, 160, 80, 50);
+  label2 = new GLabel(window1, 10, 200, 80, 50);
   label2.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label2.setText("Add Vertical Wire");
   label2.setOpaque(false);
-  label3 = new GLabel(window1, 10, 20, 80, 20);
+  label3 = new GLabel(window1, 10, 60, 80, 20);
   label3.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label3.setText("Select Layer");
   label3.setOpaque(false);
-  label4 = new GLabel(window1, 10, 220, 80, 20);
+  label4 = new GLabel(window1, 10, 260, 80, 20);
   label4.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label4.setText("Add Lightbulb");
   label4.setOpaque(false);
-  addLightbulb = new GButton(window1, 100, 215, 30, 30);
+  addLightbulb = new GButton(window1, 100, 255, 30, 30);
   addLightbulb.setText("+");
   addLightbulb.addEventHandler(this, "addLightbulbClicked");
-  delete = new GButton(window1, 10, 260, 150, 30);
+  delete = new GButton(window1, 5, 300, 150, 30);
   delete.setText("DELETE COMPONENT");
   delete.addEventHandler(this, "deleteClicked");
+  showGrid = new GCheckbox(window1, 10, 10, 120, 20);
+  showGrid.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  showGrid.setText("Show Grid");
+  showGrid.setOpaque(false);
+  showGrid.addEventHandler(this, "showGridClicked");
+  showGrid.setSelected(true);
+  clear = new GButton(window1, 195, 300, 150, 30);
+  clear.setText("CLEAR LAYER");
+  clear.addEventHandler(this, "clearClicked");
   window1.loop();
 }
 
@@ -134,3 +155,5 @@ GLabel label3;
 GLabel label4; 
 GButton addLightbulb; 
 GButton delete; 
+GCheckbox showGrid; 
+GButton clear; 
