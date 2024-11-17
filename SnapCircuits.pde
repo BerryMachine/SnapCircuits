@@ -13,6 +13,7 @@ PVector closest_point;
 boolean creating = false;
 Wire line;
 String create_component_type;
+boolean create_wire_orientation;
 
 void setup () {
   size(800,800);

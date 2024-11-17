@@ -1,14 +1,18 @@
 class Lightbulb extends Component{
   int length; 
   
-  Lightbulb ( float x, float y, int l, int s){
-   super("lightbulb",x,y,s); 
-   this.length = l;
-  }
+  Lightbulb ( float x, float y, int s){
+   super("lightbulb",x,y,s,false); 
+
+}
   
   void drawMe(){
+    rectMode(CENTER);
+    strokeWeight(5);
+    noFill();
     stroke(0,1,200);
-    rect(this.position.x, position.y, 60,30);
+    stroke(247, 194, 35);
+    rect(this.position.x, position.y, size*2,size);
     
   }
   
