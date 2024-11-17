@@ -16,17 +16,16 @@ Wire line;
 String create_component_type;
 boolean create_wire_orientation;
 boolean gridShowing = true;
-
+Battery battery;
 void setup () {
   size(800,800);
 
   selected_layer = layer_1;
-
+  battery = new Battery(100,100,50,false, 100);
   grid_points = new ArrayList<PVector>();
   gridSetup(grid_size);
 
   //battery.drawMe();
-  
   createGUI();
 }
 
@@ -41,7 +40,9 @@ void draw(){
   for (Component c: selected_layer) {
     c.drawMe();
   }
-  
+   
+
+
   //battery.drawMe();
 
 }

@@ -31,10 +31,10 @@ void mousePressed(){
   if(creating == true){
     
     if(create_component_type == "battery"){
-      selected_layer.add(new Component("battery", closest_point.x,closest_point.y,30,false));
+      selected_layer.add(new Battery( closest_point.x,closest_point.y,30,false, 9));
       
     }else if(create_component_type == "lightbulb"){
-       selected_layer.add(new Lightbulb(closest_point.x+25,closest_point.y,30));
+       selected_layer.add(new Lightbulb(closest_point.x+25,closest_point.y,30, false));
 
     
     }else if(create_component_type == "wire"){

@@ -1,8 +1,9 @@
 class Lightbulb extends Component{
   int length; 
-  
-  Lightbulb ( float x, float y, int s){
+  boolean on;
+  Lightbulb ( float x, float y, int s, boolean o ){
    super("lightbulb",x,y,s,false); 
+   this.on = o; 
 
 }
   
@@ -12,7 +13,9 @@ class Lightbulb extends Component{
     noFill();
     stroke(0,1,200);
     stroke(247, 194, 35);
-    rect(this.position.x, position.y, size*2+10,size);
+    rect(this.position.x, position.y, size*2+10,size-20);
+    
+    circle(this.position.x, position.y-(size),50);
     
   }
   

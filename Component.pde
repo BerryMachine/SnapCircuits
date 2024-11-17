@@ -20,5 +20,7 @@ class Component{
     square(this.position.x, position.y, size);
   }
   
+ 
+  
   
 }
