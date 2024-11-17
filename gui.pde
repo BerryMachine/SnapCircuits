@@ -84,7 +84,7 @@ public void createGUI(){
   addVertWire = new GButton(window1, 100, 170, 30, 30);
   addVertWire.setText("+");
   addVertWire.addEventHandler(this, "addVertWireClicked");
-  selectLayer = new GDropList(window1, 100, 20, 90, 120, 5, 10);
+  selectLayer = new GDropList(window1, 100, 20, 50, 120, 5, 10);
   selectLayer.setItems(loadStrings("list_676007"), 0);
   selectLayer.addEventHandler(this, "selectLayerPicked");
   batteryLabel = new GLabel(window1, 10, 60, 80, 20);

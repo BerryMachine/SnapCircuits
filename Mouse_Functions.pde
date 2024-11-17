@@ -69,8 +69,8 @@ void mousePressed(){
           break;
         }
       }else if(c.type == "lightbulb"){
-       if (c.position.x - c.size < mouseX
-       && c.position.x + c.size > mouseX
+       if (c.position.x - c.size-5 < mouseX
+       && c.position.x + c.size+5 > mouseX
        && c.position.y - c.size/2 < mouseY
        && c.position.y + c.size/2 > mouseY) {
           println("DAMN");

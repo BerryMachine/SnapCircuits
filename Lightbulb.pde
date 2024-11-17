@@ -12,7 +12,7 @@ class Lightbulb extends Component{
     noFill();
     stroke(0,1,200);
     stroke(247, 194, 35);
-    rect(this.position.x, position.y, size*2,size);
+    rect(this.position.x, position.y, size*2+10,size);
     
   }
   
