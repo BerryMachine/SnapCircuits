@@ -107,7 +107,7 @@ public void createGUI(){
   batteryLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   batteryLabel.setText("BATTERY");
   batteryLabel.setOpaque(false);
-  label1 = new GLabel(window1, 10, 140, 80, 50);
+  label1 = new GLabel(window1, 10, 140, 90, 50);
   label1.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label1.setText("HORIZONTAL WIRE");
   label1.setOpaque(false);
