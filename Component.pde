@@ -4,7 +4,7 @@ class Component{
   PVector position;
   PVector secondary_position;
   int size = grid_size/4;
-  int stroke_size = 5;
+  int stroke_size = 2;
   color c = color(247, 194, 35);
   boolean horizontal;
   

@@ -35,7 +35,7 @@ void indicateClosestPoint () {
   if (closest_point != null) {
     strokeWeight(1);
     noFill();
-    stroke(200, 200, 0);
+    stroke(247, 194, 35);
     circle(closest_point.x, closest_point.y, 15);
   }
 }
