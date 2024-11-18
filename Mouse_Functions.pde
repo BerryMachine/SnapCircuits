@@ -1,131 +1,67 @@
+void mouseMoved() {
+  closest_point = getPoint(mouseX, mouseY);
+}
+
 void mouseDragged(){
+  closest_point = getPoint(mouseX, mouseY);
+
   if (selected_component != null) {
-    PVector closest_point = getPoint(mouseX,mouseY);
-    
-    if(selected_component.type == "battery"){
-      selected_component.position = getPoint(mouseX, mouseY);
-    
-    }else if(selected_component.type == "lightbulb"){
-      selected_component.position.x = closest_point.x+25;
-      selected_component.position.y = closest_point.y;
-    
-    }else if(selected_component.type == "wire"){
-      if(selected_component.horizontal == true){
-        selected_component.position.x = closest_point.x+25;
-        selected_component.position.y = closest_point.y;
-      }else{
-        selected_component.position.x = closest_point.x;
-        selected_component.position.y = closest_point.y+25;
+    if (selected_component.position != closest_point && selected_component.secondary_position != closest_point) {
+      if (selected_component.status == "moving") {
+        selected_component.moveObject();
       }
       
-
+      else if (selected_component.status == "awaiting primary") {
+        selected_component.movePrimary();
+      }
+      
+      else if (selected_component.status == "awaiting secondary") {
+        selected_component.moveSecondary();
+      }
     }
-    
   }
+
 }
 
 void mousePressed(){
-  PVector closest_point = getPoint(mouseX,mouseY);
-  
-  
-  if(creating == true){
-    
+  if (creating) {
     if(create_component_type == "battery"){
-      selected_layer.add(new Battery( closest_point.x,closest_point.y,30,false, 9));
-      
-    }else if(create_component_type == "lightbulb"){
-       selected_layer.add(new Lightbulb(closest_point.x+25,closest_point.y,30, false));
-
-    
-    }else if(create_component_type == "wire"){
-      
-      if(create_wire_orientation == true){
-        selected_layer.add(new Wire(closest_point.x+25,closest_point.y,50, true));
-
-      }else{
-         selected_layer.add(new Wire(closest_point.x,closest_point.y+25,50, false));
-
-      
-      }
+      selected_component = new Battery(closest_point.x, closest_point.y);  
     }
     
-    creating = false;
+    else if (create_component_type == "lightbulb") {
+      selected_component = new Lightbulb(closest_point.x, closest_point.y);
+    }
+    
+    else if (create_component_type == "wire") {
+      selected_component = new Wire(closest_point.x, closest_point.y);
+    }
+    
+    selected_layer.add(selected_component);
+    selected_component.status = "awaiting secondary";
   
-
-  } 
-  
+  }
+ 
   else {
     for(int i = selected_layer.size()-1; i>=0; i--){
       Component c = selected_layer.get(i);
-      
-      if(c.type == "battery"){
-        if (c.position.x - c.size/2 < mouseX
-       && c.position.x + c.size/2 > mouseX
-       && c.position.y - c.size/2 < mouseY
-       && c.position.y + c.size/2 > mouseY) {
-          selected_component = c;
-          if(deleting == true){
-              selected_layer.remove(c);
-              deleting = false;
-             }
-             
-          break;
-        }
-      }else if(c.type == "lightbulb"){
-       if (c.position.x - c.size-5 < mouseX
-       && c.position.x + c.size+5 > mouseX
-       && c.position.y - c.size/2 < mouseY
-       && c.position.y + c.size/2 > mouseY) {
-          selected_component = c;
-          if(deleting == true){
-              selected_layer.remove(c);
-              deleting = false;
-             }
-             
-          break;
-        }
+
+      if (c.checkContact(mouseX, mouseY)) {
+        if (deleting == true) {
+            selected_layer.remove(c);
+            deleting = false;
+        } else {selected_component = c;}
         
-      }else if(c.type == "wire"){
-        if(c.horizontal == true){
-          if (c.position.x - grid_size/2 < mouseX
-       && c.position.x + grid_size/2 > mouseX
-       && c.position.y - 5 < mouseY
-       && c.position.y + 5 > mouseY){
-            selected_component = c;
-            
-            if(deleting == true){
-              selected_layer.remove(c);
-              deleting = false;
-             }
-             
-            break;
-           }
-        }else{
-          if (c.position.x - 5 < mouseX
-       && c.position.x + 5 > mouseX
-       && c.position.y - grid_size/2 < mouseY
-       && c.position.y + grid_size/2 > mouseY){
-            selected_component = c;
-            
-            if(deleting == true){
-              selected_layer.remove(c);
-              deleting = false;
-             }
-             
-            break;
-           }
-        
-        }
-        
+        break;
       }
-      
-      
     }
-    
-    
+
   }
+  
 }
 
 void mouseReleased(){
+  creating = false;
   selected_component = null;
+  selected_wire = null;
 }
