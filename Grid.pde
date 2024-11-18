@@ -24,7 +24,7 @@ PVector getPoint (float x, float y) {
     
     if (dist < smallest_dist) {
       smallest_dist = dist;
-      closest_grid_point = point;
+      closest_grid_point = point.copy();
     }
   }
   
