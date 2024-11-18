@@ -17,15 +17,25 @@ void gridDraw (ArrayList<PVector> grid_points) {
 
 PVector getPoint (float x, float y) {
   float smallest_dist = width;
+  PVector closest_grid_point = new PVector(width, height);
   
   for (PVector point : grid_points) {
     float dist = point.dist(new PVector(x, y));
     
     if (dist < smallest_dist) {
       smallest_dist = dist;
-      closest_point = point;
+      closest_grid_point = point;
     }
   }
   
-  return closest_point;
+  return closest_grid_point;
+}
+
+void indicateClosestPoint () {
+  if (closest_point != null) {
+    strokeWeight(1);
+    noFill();
+    stroke(200, 200, 0);
+    circle(closest_point.x, closest_point.y, 15);
+  }
 }

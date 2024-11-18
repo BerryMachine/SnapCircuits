@@ -1,40 +1,87 @@
-class Wire extends Component{
-  int length; 
-  boolean horizontal; 
-  Wire ( float x, float y, int l, boolean h){
-   super("wire",x,y,10,h); 
-   this.length = l;
-   this.horizontal = h; 
+class Wire extends Component {
+  color c = color(0, 0, 200);
+  int wire_size = 5;
+  
+  Wire (float x1, float y1) {
+    super("wire", x1, y1);
+    this.secondary_position = new PVector(x1, y1);
   }
   
-  void drawMe(){
-     strokeWeight(10);
-     
-    if (this.horizontal == true){
-    stroke(0,1,200);
-    line(this.position.x-this.length/2, this.position.y, this.position.x+this.length/2, this.position.y);
-    stroke(200,1,1);
-    line(this.position.x+this.length/2+2, this.position.y , this.position.x+this.length/2, this.position.y);
-
-    line(this.position.x-this.length/2-2, this.position.y , this.position.x-this.length/2, this.position.y);
-    }
-    else{
-    stroke(0,1,200);
-    line(this.position.x, this.position.y-this.length/2, this.position.x, this.position.y+this.length/2);
-    stroke(200,1,1);
-    line(this.position.x, this.position.y+this.length/2+2 , this.position.x, this.position.y+this.length/2);
-
-    line(this.position.x, this.position.y-this.length/2-2 , this.position.x, this.position.y-this.length/2);
-      
-      
-      
-    }
-    noStroke();
+  void drawMe() {
+    strokeWeight(wire_size);
+    stroke(c);
+    line(position.x, position.y, secondary_position.x, secondary_position.y);
+  }
+  
+  boolean checkContact (float x, float y) {
+    float left, right, up, down;
     
+    if (checkContactPrimary(x, y)) {
+      status = "awaiting primary";
+      return true;
+    }
+    
+    else if (checkContactSecondary(x, y)) {
+      status = "awaiting secondary";
+      return true;
+    }
+    
+    else if (position.y == secondary_position.y) {
+      if (position.x < secondary_position.x) {
+        left = position.x - wire_size;
+        right = secondary_position.x + wire_size;
+      } else {
+        left = secondary_position.x - wire_size;
+        right = position.x + wire_size;
+      }
+      
+      up = position.y - wire_size;
+      down = position.y + wire_size;
+            
+    } else {
+      if (position.y < secondary_position.y) {
+        up = position.y - wire_size;
+        down = secondary_position.y + wire_size;
+      } else {
+        up = secondary_position.y - wire_size;
+        down = position.y + wire_size;
+      }
+      
+      left = position.x - wire_size;
+      right = position.x + wire_size;
+      
+    }
+    
+    if (left < x && right > x && up < y && down > y) {
+      status = "moving";
+      return true;
+    } else {return false;}
   }
   
+  boolean checkContactPrimary (float x, float y) {
+    if (position.x - wire_size < x 
+     && position.x + wire_size > x
+     && position.y - wire_size < y
+     && position.y + wire_size > y) {
+       return true;
+    } else {return false;}
+  }
   
+  boolean checkContactSecondary (float x, float y) {
+    if (secondary_position.x - wire_size < x 
+     && secondary_position.x + wire_size > x
+     && secondary_position.y - wire_size < y
+     && secondary_position.y + wire_size > y) {
+       return true;
+    } else {return false;}
+  }
   
-  
-  
+  void movePrimary () {
+    position = closest_point;
+  }
+
+  void moveSecondary () {
+    secondary_position = closest_point;
+  }
+
 }
