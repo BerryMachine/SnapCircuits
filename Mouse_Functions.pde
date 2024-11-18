@@ -63,5 +63,4 @@ void mousePressed(){
 void mouseReleased(){
   creating = false;
   selected_component = null;
-  selected_wire = null;
 }

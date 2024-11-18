@@ -34,27 +34,27 @@ class Component{
     
     else if (position.y == secondary_position.y) {
       if (position.x < secondary_position.x) {
-        left = position.x - wire_size;
-        right = secondary_position.x + wire_size;
+        left = position.x - size;
+        right = secondary_position.x + size;
       } else {
-        left = secondary_position.x - wire_size;
-        right = position.x + wire_size;
+        left = secondary_position.x - size;
+        right = position.x + size;
       }
       
-      up = position.y - wire_size;
-      down = position.y + wire_size;
+      up = position.y - size;
+      down = position.y + size;
             
     } else {
       if (position.y < secondary_position.y) {
-        up = position.y - wire_size;
-        down = secondary_position.y + wire_size;
+        up = position.y - size;
+        down = secondary_position.y + size;
       } else {
-        up = secondary_position.y - wire_size;
-        down = position.y + wire_size;
+        up = secondary_position.y - size;
+        down = position.y + size;
       }
       
-      left = position.x - wire_size;
-      right = position.x + wire_size;
+      left = position.x - size;
+      right = position.x + size;
       
     }
     
