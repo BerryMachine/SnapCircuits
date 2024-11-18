@@ -7,6 +7,8 @@ class Battery extends Component{
   }
   
   void drawMe(){
+    stroke(247, 194, 35);
+    strokeWeight(stroke_size);
     fill(0,0,0);
     rect(this.position.x, this.position.y, size*2-10, size);
     fill(106,74,45);
