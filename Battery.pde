@@ -1,12 +1,12 @@
 class Battery extends Component{
-  float voltage;
-  Battery(float x, float y, int s, boolean h, float v){
-    super("battery",x,y,s,h);
-    this.voltage = v; 
+  float voltage = 9;
+  
+  Battery(float x, float y){
+    super("battery", x, y);
+    this.secondary_position = new PVector(x + grid_size, y);
   }
   
   void drawMe(){
-    rectMode(CENTER);
     fill(0,0,0);
     rect(this.position.x, this.position.y, size*2-10, size);
     fill(106,74,45);
@@ -16,7 +16,6 @@ class Battery extends Component{
     textSize(size/4);
     fill(255,255,255);
     text("DURACELL®", this.position.x-size/2, this.position.y+size/10);
-    noStroke();
     
   }
   

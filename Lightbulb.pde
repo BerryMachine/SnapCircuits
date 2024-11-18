@@ -1,10 +1,9 @@
 class Lightbulb extends Component {
-  boolean on;
+  boolean on = false;
 
-  Lightbulb ( float x1, float y1, boolean o) {
+  Lightbulb (float x1, float y1) {
     super("lightbulb", x1, y1);
     this.secondary_position = new PVector(x1 + grid_size, y1);
-    this.on = o;
   }
   
   void drawMe() {
@@ -19,6 +18,7 @@ class Lightbulb extends Component {
     if (position.x == secondary_position.x) {
       float middle_y = (position.y + secondary_position.y)/2;
       rect(position.x, middle_y, size, size + grid_size/2);
+      circle(position.x, middle_y, size);
     }
   }
 

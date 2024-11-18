@@ -27,14 +27,12 @@ public void addBatteryClicked(GButton source, GEvent event) { //_CODE_:addBatter
 
 public void addHorizontalWireClicked(GButton source, GEvent event) { //_CODE_:addHorizontalWire:391999:
   create_component_type = "wire";
-  create_wire_orientation = true;
   creating = true;
 
 } //_CODE_:addHorizontalWire:391999:
 
 public void addVertWireClicked(GButton source, GEvent event) { //_CODE_:addVertWire:837893:
   create_component_type = "wire";
-  create_wire_orientation = false;
   creating = true;
 
 } //_CODE_:addVertWire:837893:
