@@ -25,9 +25,8 @@ void mouseDragged(){
 
 void mousePressed(){
   if (creating) {
-    
-    if (create_component_type == "battery") {
-      selected_component = new Component("battery", closest_point.x, closest_point.y);
+    if(create_component_type == "battery"){
+      selected_component = new Battery(closest_point.x, closest_point.y);  
     }
     
     else if (create_component_type == "lightbulb") {

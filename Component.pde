@@ -18,14 +18,48 @@ class Component{
     noFill();
     stroke(c);
   }
-  
+
   boolean checkContact (float x, float y) {
-    float left = position.x - size, 
-          right = position.x + size, 
-          up = position.y - size, 
-          down = position.y + size;
+    float left, right, up, down;
+    
+    if (checkContactPrimary(x, y)) {
+      status = "awaiting primary";
+      return true;
+    }
+    
+    else if (checkContactSecondary(x, y)) {
+      status = "awaiting secondary";
+      return true;
+    }
+    
+    else if (position.y == secondary_position.y) {
+      if (position.x < secondary_position.x) {
+        left = position.x - wire_size;
+        right = secondary_position.x + wire_size;
+      } else {
+        left = secondary_position.x - wire_size;
+        right = position.x + wire_size;
+      }
+      
+      up = position.y - wire_size;
+      down = position.y + wire_size;
+            
+    } else {
+      if (position.y < secondary_position.y) {
+        up = position.y - wire_size;
+        down = secondary_position.y + wire_size;
+      } else {
+        up = secondary_position.y - wire_size;
+        down = position.y + wire_size;
+      }
+      
+      left = position.x - wire_size;
+      right = position.x + wire_size;
+      
+    }
     
     if (left < x && right > x && up < y && down > y) {
+      status = "moving";
       return true;
     } else {return false;}
   }
@@ -86,5 +120,5 @@ class Component{
     }
     
   }
-  
+
 }
