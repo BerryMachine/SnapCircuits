@@ -7,6 +7,7 @@ class Component{
   int stroke_size = 2;
   color c = color(247, 194, 35);
   boolean horizontal;
+  boolean completeCircuit;
   
   Component (String t, float x, float y) {
     this.type = t;
@@ -121,4 +122,15 @@ class Component{
     
   }
 
+}
+
+void checkCompleteCircuit(){
+  
+  
+  
+  
+  
+  
+  
+  
 }
