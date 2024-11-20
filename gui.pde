@@ -46,6 +46,14 @@ public void selectLayerPicked(GDropList source, GEvent event) { //_CODE_:selectL
       
       
   }
+  else if(selectLayer.getSelectedText().contains("Simple Circuit")){
+   selected_layer = layer_5; 
+    
+  }
+  
+  else if(selectLayer.getSelectedText().contains("Parallel Circuit")){
+    selected_layer = layer_6;
+  }
 } //_CODE_:selectLayer:676007:
 
 public void addLightbulbClicked(GButton source, GEvent event) { //_CODE_:addLightbulb:988807:
@@ -89,7 +97,7 @@ public void createGUI(){
   addWire = new GButton(window1, 100, 150, 30, 30);
   addWire.setText("+");
   addWire.addEventHandler(this, "addWireClicked");
-  selectLayer = new GDropList(window1, 100, 60, 50, 120, 5, 10);
+  selectLayer = new GDropList(window1, 97, 54, 95, 96, 5, 10);
   selectLayer.setItems(loadStrings("list_676007"), 0);
   selectLayer.addEventHandler(this, "selectLayerPicked");
   batteryLabel = new GLabel(window1, 10, 105, 80, 20);
