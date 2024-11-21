@@ -48,7 +48,8 @@ public void selectLayerPicked(GDropList source, GEvent event) { //_CODE_:selectL
   }
   else if(selectLayer.getSelectedText().contains("Simple Circuit")){
    selected_layer = layer_5; 
-    
+    draw_sim();
+
   }
   
   else if(selectLayer.getSelectedText().contains("Parallel Circuit")){

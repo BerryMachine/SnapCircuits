@@ -16,7 +16,8 @@ boolean creating = false;
 boolean deleting = false;
 String create_component_type;
 boolean gridShowing = true;
-
+PVector ePos = new PVector(grid_size*4, grid_size*4);;
+PVector eVel = new PVector(1,0);
 void setup () {
   size(800,800);
 
@@ -41,5 +42,7 @@ void draw(){
   for (Component c: selected_layer) {
     c.drawMe();
   }
-
+if (selected_layer == layer_5){
+     electricity();
+}
 }
