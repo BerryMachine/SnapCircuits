@@ -64,15 +64,6 @@ public void deleteClicked(GButton source, GEvent event) { //_CODE_:delete:448134
   deleting = true;
 } //_CODE_:delete:448134:
 
-public void showGridClicked(GCheckbox source, GEvent event) { //_CODE_:showGrid:970966:
-  if(showGrid.isSelected()){
-    gridShowing = true;
-    
-  }else{
-    gridShowing = false;
-  }
-} //_CODE_:showGrid:970966:
-
 public void clearClicked(GButton source, GEvent event) { //_CODE_:clear:830938:
   selected_layer.clear();
 } //_CODE_:clear:830938:
@@ -93,29 +84,36 @@ public void saveSnapshotClicked(GButton source, GEvent event) { //_CODE_:saveSna
   }
 } //_CODE_:saveSnapshot:556675:
 
-public void voltageChanged(GSlider source, GEvent event) { //_CODE_:voltage:652276:
-  speed = voltage.getValueI();
-  int i = 0;
-  for(PVector pos:positions){
-      if (pos.x >= grid_size*10 && pos.y >= grid_size*4){
-        velocities.get(i).x = 0; 
-        velocities.get(i).y = speed; 
-       }
-       if(pos.y>=grid_size*6 && pos.x >=grid_size*10){
-        velocities.get(i).x = -speed; 
-        velocities.get(i).y = 0; 
-       }
-       if (pos.x<= grid_size*4 && pos.y >= grid_size*6){
-        velocities.get(i).x = 0; 
-        velocities.get(i).y = -speed; 
-       }
-       if (pos.x<= grid_size*4 && pos.y <= grid_size*4){
-        velocities.get(i).x = speed; 
-        velocities.get(i).y = 0; 
-       }
-  
+public void showChanged(GSlider source, GEvent event) { //_CODE_:show:652276:
+
+  if(show.getValueI() == 1){
+    gridShowing = true;
+    
+  }else{
+    gridShowing = false;
   }
-} //_CODE_:voltage:652276:
+  //speed = voltage.getValueI();
+  //int i = 0;
+  //for(PVector pos:positions){
+  //    if (pos.x >= grid_size*10 && pos.y >= grid_size*4){
+  //      velocities.get(i).x = 0; 
+  //      velocities.get(i).y = speed; 
+  //     }
+  //     if(pos.y>=grid_size*6 && pos.x >=grid_size*10){
+  //      velocities.get(i).x = -speed; 
+  //      velocities.get(i).y = 0; 
+  //     }
+  //     if (pos.x<= grid_size*4 && pos.y >= grid_size*6){
+  //      velocities.get(i).x = 0; 
+  //      velocities.get(i).y = -speed; 
+  //     }
+  //     if (pos.x<= grid_size*4 && pos.y <= grid_size*4){
+  //      velocities.get(i).x = speed; 
+  //      velocities.get(i).y = 0; 
+  //     }
+  
+  //}
+} //_CODE_:show:652276:
 
 
 
@@ -161,12 +159,6 @@ public void createGUI(){
   delete = new GButton(window1, 5, 300, 150, 30);
   delete.setText("DELETE COMPONENT");
   delete.addEventHandler(this, "deleteClicked");
-  showGrid = new GCheckbox(window1, 10, 10, 120, 20);
-  showGrid.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
-  showGrid.setText("SHOW GRID");
-  showGrid.setOpaque(false);
-  showGrid.addEventHandler(this, "showGridClicked");
-  showGrid.setSelected(true);
   clear = new GButton(window1, 195, 300, 150, 30);
   clear.setText("CLEAR LAYER");
   clear.addEventHandler(this, "clearClicked");
@@ -177,14 +169,14 @@ public void createGUI(){
   saveSnapshot = new GButton(window1, 240, 250, 100, 30);
   saveSnapshot.setText("Save Snapshot");
   saveSnapshot.addEventHandler(this, "saveSnapshotClicked");
-  voltage = new GSlider(window1, 240, 0, 100, 40, 10.0);
-  voltage.setLimits(1, 1, 5);
-  voltage.setNumberFormat(G4P.INTEGER, 0);
-  voltage.setOpaque(false);
-  voltage.addEventHandler(this, "voltageChanged");
-  label1 = new GLabel(window1, 135, 10, 100, 20);
+  show = new GSlider(window1, 100, 0, 25, 40, 10.0);
+  show.setLimits(1, 0, 1);
+  show.setNumberFormat(G4P.INTEGER, 0);
+  show.setOpaque(false);
+  show.addEventHandler(this, "showChanged");
+  label1 = new GLabel(window1, 10, 10, 80, 20);
   label1.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  label1.setText("VOLTAGE:");
+  label1.setText("SHOW GRID:");
   label1.setOpaque(false);
   window1.loop();
 }
@@ -201,9 +193,8 @@ GLabel label3;
 GLabel label4; 
 GButton addLightbulb; 
 GButton delete; 
-GCheckbox showGrid; 
 GButton clear; 
 GTextField fileName; 
 GButton saveSnapshot; 
-GSlider voltage; 
+GSlider show; 
 GLabel label1; 
