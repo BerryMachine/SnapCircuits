@@ -20,6 +20,7 @@ boolean gridShowing = true;
 ArrayList<PVector> positions = new ArrayList<PVector>();
 ArrayList<PVector> velocities = new ArrayList<PVector>();
 PVector closest;
+int numFiles = 1;
 
 
 int frame = 0;
