@@ -71,7 +71,8 @@ void draw_sim(){
 
 void electricity(){
   fill(200,200,200);
-
+  stroke(247,194,35);
+  strokeWeight(1);
   //PVector[] positions = new PVector[5];
     int i = 0;
 
@@ -110,6 +111,7 @@ void electricity(){
   
   if(frame>22*30){
     fill(247, 194, 35);
+    
     circle(grid_size*4.5, closest.y, grid_size/4);
 
   }

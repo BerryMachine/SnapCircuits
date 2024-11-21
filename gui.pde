@@ -73,7 +73,7 @@ public void fileNameEntered(GTextField source, GEvent event) { //_CODE_:fileName
 } //_CODE_:fileName:875264:
 
 public void saveSnapshotClicked(GButton source, GEvent event) { //_CODE_:saveSnapshot:556675:
-  if(fileName.getText()!=""){
+  if(fileName.getText().trim()!=""){
      save(fileName.getText() + ".png");
      fileName.setPromptText("Enter File Name");
 
