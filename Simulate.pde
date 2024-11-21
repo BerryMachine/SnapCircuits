@@ -1,5 +1,4 @@
 void draw_sim(){
-  PVector closest;
 
   //bottom wire
   closest = getPoint(grid_size*5, grid_size*6);
@@ -69,22 +68,50 @@ void draw_sim(){
   selected_layer.add(selected_component);
  
 }
+
 void electricity(){
   fill(200,200,200);
-   circle(ePos.x,ePos.y,5);
-   if (ePos.x >= grid_size*10 && ePos.y >= grid_size*4){
-    eVel = new PVector (0,1); 
-   }
-   if(ePos.y>=grid_size*6 && ePos.x >=grid_size*10){
-    eVel = new PVector(-1,0); 
-   }
-   if (ePos.x<= grid_size*4 && ePos.y >= grid_size*6){
-    eVel = new PVector(0,-1); 
-   }
-   if (ePos.x<= grid_size*4 && ePos.y <= grid_size*4){
-    eVel = new PVector(1,0);
-   }
- ePos.add(eVel);
+
+  //PVector[] positions = new PVector[5];
+    int i = 0;
+
+    for(PVector pos:positions){
+      circle(pos.x,pos.y,5);
+      
+      if (pos.x >= grid_size*10 && pos.y >= grid_size*4){
+        velocities.get(i).x = 0; 
+        velocities.get(i).y = 1; 
+       }
+       if(pos.y>=grid_size*6 && pos.x >=grid_size*10){
+        velocities.get(i).x = -1; 
+        velocities.get(i).y = 0; 
+       }
+       if (pos.x<= grid_size*4 && pos.y >= grid_size*6){
+        velocities.get(i).x = 0; 
+        velocities.get(i).y = -1; 
+       }
+       if (pos.x<= grid_size*4 && pos.y <= grid_size*4){
+        velocities.get(i).x = 1; 
+        velocities.get(i).y = 0; 
+       }
+       
+       pos.add(velocities.get(i));
+       
+       i++;
+
   
+     }
+     
+  if(frame%30==0 && frame<=26*30){
+    positions.add(new PVector(grid_size*4, grid_size*4));
+    velocities.add(new PVector(1,0));
+    
+  }
   
+  if(frame>22*30){
+    fill(247, 194, 35);
+    circle(grid_size*4.5, closest.y, grid_size/4);
+
+  }
+   
 }

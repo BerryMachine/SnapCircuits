@@ -49,12 +49,10 @@ public void selectLayerPicked(GDropList source, GEvent event) { //_CODE_:selectL
   else if(selectLayer.getSelectedText().contains("Simple Circuit")){
    selected_layer = layer_5; 
     draw_sim();
+    frame = 0;
 
   }
   
-  else if(selectLayer.getSelectedText().contains("Parallel Circuit")){
-    selected_layer = layer_6;
-  }
 } //_CODE_:selectLayer:676007:
 
 public void addLightbulbClicked(GButton source, GEvent event) { //_CODE_:addLightbulb:988807:
