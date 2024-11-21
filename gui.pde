@@ -93,6 +93,30 @@ public void saveSnapshotClicked(GButton source, GEvent event) { //_CODE_:saveSna
   }
 } //_CODE_:saveSnapshot:556675:
 
+public void voltageChanged(GSlider source, GEvent event) { //_CODE_:voltage:652276:
+  speed = voltage.getValueI();
+  int i = 0;
+  for(PVector pos:positions){
+      if (pos.x >= grid_size*10 && pos.y >= grid_size*4){
+        velocities.get(i).x = 0; 
+        velocities.get(i).y = speed; 
+       }
+       if(pos.y>=grid_size*6 && pos.x >=grid_size*10){
+        velocities.get(i).x = -speed; 
+        velocities.get(i).y = 0; 
+       }
+       if (pos.x<= grid_size*4 && pos.y >= grid_size*6){
+        velocities.get(i).x = 0; 
+        velocities.get(i).y = -speed; 
+       }
+       if (pos.x<= grid_size*4 && pos.y <= grid_size*4){
+        velocities.get(i).x = speed; 
+        velocities.get(i).y = 0; 
+       }
+  
+  }
+} //_CODE_:voltage:652276:
+
 
 
 // Create all the GUI controls. 
@@ -153,6 +177,15 @@ public void createGUI(){
   saveSnapshot = new GButton(window1, 240, 250, 100, 30);
   saveSnapshot.setText("Save Snapshot");
   saveSnapshot.addEventHandler(this, "saveSnapshotClicked");
+  voltage = new GSlider(window1, 240, 0, 100, 40, 10.0);
+  voltage.setLimits(1, 1, 5);
+  voltage.setNumberFormat(G4P.INTEGER, 0);
+  voltage.setOpaque(false);
+  voltage.addEventHandler(this, "voltageChanged");
+  label1 = new GLabel(window1, 135, 10, 100, 20);
+  label1.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label1.setText("VOLTAGE:");
+  label1.setOpaque(false);
   window1.loop();
 }
 
@@ -172,3 +205,5 @@ GCheckbox showGrid;
 GButton clear; 
 GTextField fileName; 
 GButton saveSnapshot; 
+GSlider voltage; 
+GLabel label1; 
