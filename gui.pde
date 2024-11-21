@@ -77,6 +77,22 @@ public void clearClicked(GButton source, GEvent event) { //_CODE_:clear:830938:
   selected_layer.clear();
 } //_CODE_:clear:830938:
 
+public void fileNameEntered(GTextField source, GEvent event) { //_CODE_:fileName:875264:
+
+} //_CODE_:fileName:875264:
+
+public void saveSnapshotClicked(GButton source, GEvent event) { //_CODE_:saveSnapshot:556675:
+  if(fileName.getText()!=""){
+     save(fileName.getText() + ".png");
+     fileName.setPromptText("Enter File Name");
+
+  }else{
+      save("circuit" + str(numFiles) + ".png");
+      numFiles++;
+  
+  }
+} //_CODE_:saveSnapshot:556675:
+
 
 
 // Create all the GUI controls. 
@@ -86,7 +102,7 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
-  window1 = GWindow.getWindow(this, "Window title", 0, 0, 350, 300, JAVA2D);
+  window1 = GWindow.getWindow(this, "Window title", 0, 0, 350, 350, JAVA2D);
   window1.noLoop();
   window1.setActionOnClose(G4P.KEEP_OPEN);
   window1.addDrawHandler(this, "win_draw1");
@@ -118,7 +134,7 @@ public void createGUI(){
   addLightbulb = new GButton(window1, 100, 200, 30, 30);
   addLightbulb.setText("+");
   addLightbulb.addEventHandler(this, "addLightbulbClicked");
-  delete = new GButton(window1, 5, 250, 150, 30);
+  delete = new GButton(window1, 5, 300, 150, 30);
   delete.setText("DELETE COMPONENT");
   delete.addEventHandler(this, "deleteClicked");
   showGrid = new GCheckbox(window1, 10, 10, 120, 20);
@@ -127,9 +143,16 @@ public void createGUI(){
   showGrid.setOpaque(false);
   showGrid.addEventHandler(this, "showGridClicked");
   showGrid.setSelected(true);
-  clear = new GButton(window1, 195, 250, 150, 30);
+  clear = new GButton(window1, 195, 300, 150, 30);
   clear.setText("CLEAR LAYER");
   clear.addEventHandler(this, "clearClicked");
+  fileName = new GTextField(window1, 10, 250, 220, 30, G4P.SCROLLBARS_NONE);
+  fileName.setPromptText("Enter File Name");
+  fileName.setOpaque(true);
+  fileName.addEventHandler(this, "fileNameEntered");
+  saveSnapshot = new GButton(window1, 240, 250, 100, 30);
+  saveSnapshot.setText("Save Snapshot");
+  saveSnapshot.addEventHandler(this, "saveSnapshotClicked");
   window1.loop();
 }
 
@@ -147,3 +170,5 @@ GButton addLightbulb;
 GButton delete; 
 GCheckbox showGrid; 
 GButton clear; 
+GTextField fileName; 
+GButton saveSnapshot; 
