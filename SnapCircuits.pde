@@ -7,7 +7,6 @@ ArrayList<Component> layer_2 = new ArrayList<Component>();
 ArrayList<Component> layer_3 = new ArrayList<Component>();
 ArrayList<Component> layer_4 = new ArrayList<Component>();
 ArrayList<Component> layer_5 = new ArrayList<Component>();
-ArrayList<Component> layer_6 = new ArrayList<Component>();
 ArrayList<Component> selected_layer;
 Component selected_component;
 ArrayList<PVector> grid_points;

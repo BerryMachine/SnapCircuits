@@ -61,11 +61,17 @@ public void addLightbulbClicked(GButton source, GEvent event) { //_CODE_:addLigh
 } //_CODE_:addLightbulb:988807:
 
 public void deleteClicked(GButton source, GEvent event) { //_CODE_:delete:448134:
-  deleting = true;
+  if(selected_layer!=layer_5){
+    deleting = true;
+
+  }
 } //_CODE_:delete:448134:
 
 public void clearClicked(GButton source, GEvent event) { //_CODE_:clear:830938:
-  selected_layer.clear();
+  if(selected_layer!=layer_5){
+     selected_layer.clear();
+
+  }
 } //_CODE_:clear:830938:
 
 public void fileNameEntered(GTextField source, GEvent event) { //_CODE_:fileName:875264:
@@ -92,27 +98,7 @@ public void showChanged(GSlider source, GEvent event) { //_CODE_:show:652276:
   }else{
     gridShowing = false;
   }
-  //speed = voltage.getValueI();
-  //int i = 0;
-  //for(PVector pos:positions){
-  //    if (pos.x >= grid_size*10 && pos.y >= grid_size*4){
-  //      velocities.get(i).x = 0; 
-  //      velocities.get(i).y = speed; 
-  //     }
-  //     if(pos.y>=grid_size*6 && pos.x >=grid_size*10){
-  //      velocities.get(i).x = -speed; 
-  //      velocities.get(i).y = 0; 
-  //     }
-  //     if (pos.x<= grid_size*4 && pos.y >= grid_size*6){
-  //      velocities.get(i).x = 0; 
-  //      velocities.get(i).y = -speed; 
-  //     }
-  //     if (pos.x<= grid_size*4 && pos.y <= grid_size*4){
-  //      velocities.get(i).x = speed; 
-  //      velocities.get(i).y = 0; 
-  //     }
-  
-  //}
+
 } //_CODE_:show:652276:
 
 
