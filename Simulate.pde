@@ -1,3 +1,4 @@
+int speed = 1;
 void draw_sim(){
 
   //bottom wire
@@ -80,18 +81,18 @@ void electricity(){
       
       if (pos.x >= grid_size*10 && pos.y >= grid_size*4){
         velocities.get(i).x = 0; 
-        velocities.get(i).y = 1; 
+        velocities.get(i).y = speed; 
        }
        if(pos.y>=grid_size*6 && pos.x >=grid_size*10){
-        velocities.get(i).x = -1; 
+        velocities.get(i).x = -speed; 
         velocities.get(i).y = 0; 
        }
        if (pos.x<= grid_size*4 && pos.y >= grid_size*6){
         velocities.get(i).x = 0; 
-        velocities.get(i).y = -1; 
+        velocities.get(i).y = -speed; 
        }
        if (pos.x<= grid_size*4 && pos.y <= grid_size*4){
-        velocities.get(i).x = 1; 
+        velocities.get(i).x = speed; 
         velocities.get(i).y = 0; 
        }
        
