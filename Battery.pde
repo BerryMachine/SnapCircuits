@@ -1,11 +1,15 @@
 //Battery class
 class Battery extends Component{
+  //Field
   float voltage = 9;
+  
+  //Constructor 
   
   Battery(float x, float y){
     super("battery", x, y);
     this.secondary_position = new PVector(x + grid_size, y);
   }
+  //Method
   
  //Draw  battery 
   void drawMe(){

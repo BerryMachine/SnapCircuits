@@ -23,7 +23,7 @@ void mouseDragged(){
   }
 
 }
-
+//Initalize the drawing of a component when mouse is pressed
 void mousePressed(){
   if (creating) {
     if(create_component_type == "battery"){

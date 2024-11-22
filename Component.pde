@@ -1,5 +1,6 @@
 //Circuit components class
 class Component{
+  //Fields
   String type;
   String status = "none"; // none, moving, awaiting secondary, awaiting primary
   PVector position;
@@ -8,13 +9,14 @@ class Component{
   int stroke_size = 2;
   color c = color(247, 194, 35);
   boolean horizontal;
-  boolean completeCircuit;
   
+  //Methods
   Component (String t, float x, float y) {
     this.type = t;
     this.position = new PVector(x,y);
   }
   
+ //Methods
   void drawMe() { 
     strokeWeight(stroke_size);
     noFill();
@@ -84,6 +86,7 @@ class Component{
     } else {return false;}
   }
   
+  //Object movement 
   void moveObject () {
     PVector displacement = PVector.sub(closest_point, position);
     position = closest_point;
@@ -123,15 +126,4 @@ class Component{
     
   }
 
-}
-
-void checkCompleteCircuit(){
-  
-  
-  
-  
-  
-  
-  
-  
 }

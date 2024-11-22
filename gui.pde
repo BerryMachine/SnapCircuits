@@ -18,6 +18,8 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:windo
   appc.background(230);
 } //_CODE_:window1:277719:
 
+//GUIs
+
 public void addBatteryClicked(GButton source, GEvent event) { //_CODE_:addBattery:517943:
   //components.add(new Component("battery", 100,100,100));
   //components.get(components.size()-1).drawMe();

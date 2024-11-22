@@ -52,11 +52,12 @@ void draw(){
     gridDraw(grid_points);
     indicateClosestPoint();
   }
-  
+//Draw each component on selected layer
   for (Component c: selected_layer) {
     c.drawMe();
   }
-  //animation fo the simple circuit
+  
+//animation fo the simple circuit
 if (selected_layer == layer_5){
      electricity();
      frame++;

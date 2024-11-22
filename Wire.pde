@@ -1,12 +1,16 @@
 //Wire class
 class Wire extends Component {
+  //Fields 
   color c = color(0, 0, 200);
   int wire_size = 5;
   
+  //Constructor 
   Wire (float x1, float y1) {
     super("wire", x1, y1);
     this.secondary_position = new PVector(x1, y1);
   }
+  
+  //Methods 
   
   void drawMe() {
     strokeWeight(wire_size);

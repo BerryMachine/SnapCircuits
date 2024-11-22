@@ -1,7 +1,9 @@
 //Simulation
 void draw_sim(){
+  //Setting up wire values
   PVector[] wire_positions = {getPoint(grid_size*5, grid_size*6),getPoint(grid_size*10, grid_size*6),getPoint(grid_size*5, grid_size*4),getPoint(grid_size*10, grid_size*4),getPoint(grid_size*10, grid_size*4),getPoint(grid_size*10, grid_size*6),getPoint(grid_size*4, grid_size*4),getPoint(grid_size*4, grid_size*6)};
   
+  //Drawing simlation values
   for(int i = 0; i<4; i++){
     selected_component = new Wire(wire_positions[i*2].x,wire_positions[i*2].y);
     selected_component.position = wire_positions[i*2];
@@ -36,6 +38,7 @@ void electricity(){
     for(PVector pos:positions){
       circle(pos.x,pos.y,5);
       
+      //Changing the direction of the electrons once it hits a corner 
       if (pos.x >= grid_size*10 && pos.y >= grid_size*4){
         velocities.get(i).x = 0; 
         velocities.get(i).y = 1; 
@@ -53,6 +56,7 @@ void electricity(){
         velocities.get(i).y = 0; 
        }
        
+       //Animate
        pos.add(velocities.get(i));
        
        i++;
@@ -60,12 +64,14 @@ void electricity(){
   
      }
      
+   //Initalizing the position and velocity of new electrons
   if(frame%30==0 && frame<=26*30){
     positions.add(new PVector(grid_size*4, grid_size*4));
     velocities.add(new PVector(1,0));
-    
+ 
   }
   
+  //Filling the lightbulb
   if(frame>22*30){
     fill(247, 194, 35);
     
