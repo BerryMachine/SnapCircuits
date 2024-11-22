@@ -21,13 +21,21 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:windo
 public void addBatteryClicked(GButton source, GEvent event) { //_CODE_:addBattery:517943:
   //components.add(new Component("battery", 100,100,100));
   //components.get(components.size()-1).drawMe();
-  create_component_type = "battery";
-  creating = true;
+  if(selected_layer!=layer_5){
+    create_component_type = "battery";
+    creating = true;
+  }
+  
+    
+  
 } //_CODE_:addBattery:517943:
 
 public void addWireClicked(GButton source, GEvent event) { //_CODE_:addWire:837893:
+  if(selected_layer!=layer_5){
   create_component_type = "wire";
   creating = true;
+  
+  }
 
 } //_CODE_:addWire:837893:
 
@@ -50,14 +58,24 @@ public void selectLayerPicked(GDropList source, GEvent event) { //_CODE_:selectL
    selected_layer = layer_5; 
     draw_sim();
     frame = 0;
+    message.setVisible(true);
 
+
+  }
+  
+  if(selectLayer.getSelectedText().contains("Simple Circuit") == false){
+    message.setVisible(false);
+    positions.clear();
+    velocities.clear();
   }
   
 } //_CODE_:selectLayer:676007:
 
 public void addLightbulbClicked(GButton source, GEvent event) { //_CODE_:addLightbulb:988807:
+  if(selected_layer!=layer_5){
   create_component_type = "lightbulb";
   creating = true;
+  }
 } //_CODE_:addLightbulb:988807:
 
 public void deleteClicked(GButton source, GEvent event) { //_CODE_:delete:448134:
@@ -90,16 +108,15 @@ public void saveSnapshotClicked(GButton source, GEvent event) { //_CODE_:saveSna
   }
 } //_CODE_:saveSnapshot:556675:
 
-public void showChanged(GSlider source, GEvent event) { //_CODE_:show:652276:
+public void showGridChanged(GCheckbox source, GEvent event) { //_CODE_:showGrid:796311:
+  if(showGrid.isSelected()){
+      gridShowing = true;
 
-  if(show.getValueI() == 1){
-    gridShowing = true;
-    
   }else{
-    gridShowing = false;
+        gridShowing = false;
   }
-
-} //_CODE_:show:652276:
+    
+} //_CODE_:showGrid:796311:
 
 
 
@@ -120,7 +137,7 @@ public void createGUI(){
   addWire = new GButton(window1, 100, 150, 30, 30);
   addWire.setText("+");
   addWire.addEventHandler(this, "addWireClicked");
-  selectLayer = new GDropList(window1, 97, 54, 95, 96, 5, 10);
+  selectLayer = new GDropList(window1, 97, 44, 95, 96, 5, 10);
   selectLayer.setItems(loadStrings("list_676007"), 0);
   selectLayer.addEventHandler(this, "selectLayerPicked");
   batteryLabel = new GLabel(window1, 10, 105, 80, 20);
@@ -131,7 +148,7 @@ public void createGUI(){
   label2.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label2.setText("WIRE");
   label2.setOpaque(false);
-  label3 = new GLabel(window1, 10, 55, 80, 30);
+  label3 = new GLabel(window1, 10, 45, 80, 30);
   label3.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label3.setText("SELECT LAYER");
   label3.setOpaque(false);
@@ -155,15 +172,16 @@ public void createGUI(){
   saveSnapshot = new GButton(window1, 240, 250, 100, 30);
   saveSnapshot.setText("Save Snapshot");
   saveSnapshot.addEventHandler(this, "saveSnapshotClicked");
-  show = new GSlider(window1, 100, 0, 25, 40, 10.0);
-  show.setLimits(1, 0, 1);
-  show.setNumberFormat(G4P.INTEGER, 0);
-  show.setOpaque(false);
-  show.addEventHandler(this, "showChanged");
-  label1 = new GLabel(window1, 10, 10, 80, 20);
-  label1.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  label1.setText("SHOW GRID:");
-  label1.setOpaque(false);
+  message = new GLabel(window1, 10, 80, 200, 20);
+  message.setText("*This Layer Cannot Be Edited.");
+  message.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
+  message.setOpaque(false);
+  showGrid = new GCheckbox(window1, 10, 10, 120, 20);
+  showGrid.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  showGrid.setText("SHOW GRID");
+  showGrid.setOpaque(false);
+  showGrid.addEventHandler(this, "showGridChanged");
+  showGrid.setSelected(true);
   window1.loop();
 }
 
@@ -182,5 +200,5 @@ GButton delete;
 GButton clear; 
 GTextField fileName; 
 GButton saveSnapshot; 
-GSlider show; 
-GLabel label1; 
+GLabel message; 
+GCheckbox showGrid; 
