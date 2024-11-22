@@ -25,7 +25,6 @@ int numFiles = 1;
 int frame = 0;
 void setup () {
   size(800,800);
-
   rectMode(RADIUS);
 
   selected_layer = layer_1;
@@ -34,6 +33,8 @@ void setup () {
   gridSetup(grid_size);
   
   createGUI();
+  message.setVisible(false);
+
 }
 
 void draw(){
