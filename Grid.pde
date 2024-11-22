@@ -1,3 +1,4 @@
+
 void gridSetup (int size) {
   for (int row = 0; row <= height; row+=size) {
     for (int col = 0; col <= width; col+=size) {
@@ -5,7 +6,7 @@ void gridSetup (int size) {
     }
   }
 }
-
+//Draw grid
 void gridDraw (ArrayList<PVector> grid_points) {
   for (PVector point : grid_points) {
     stroke(50);

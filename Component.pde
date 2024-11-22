@@ -1,3 +1,4 @@
+//Circuit components class
 class Component{
   String type;
   String status = "none"; // none, moving, awaiting secondary, awaiting primary

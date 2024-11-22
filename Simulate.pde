@@ -1,3 +1,4 @@
+//Simulation
 void draw_sim(){
   PVector[] wire_positions = {getPoint(grid_size*5, grid_size*6),getPoint(grid_size*10, grid_size*6),getPoint(grid_size*5, grid_size*4),getPoint(grid_size*10, grid_size*4),getPoint(grid_size*10, grid_size*4),getPoint(grid_size*10, grid_size*6),getPoint(grid_size*4, grid_size*4),getPoint(grid_size*4, grid_size*6)};
   
@@ -24,6 +25,7 @@ void draw_sim(){
  
 }
 
+// Draw electricity flowing through circuit
 void electricity(){
   fill(200,200,200);
   stroke(247,194,35);

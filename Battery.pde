@@ -1,3 +1,4 @@
+//Battery class
 class Battery extends Component{
   float voltage = 9;
   
@@ -6,6 +7,7 @@ class Battery extends Component{
     this.secondary_position = new PVector(x + grid_size, y);
   }
   
+ //Draw  battery 
   void drawMe(){
     stroke(247, 194, 35);
     strokeWeight(stroke_size);

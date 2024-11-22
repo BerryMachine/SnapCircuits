@@ -1,3 +1,4 @@
+//Wire class
 class Wire extends Component {
   color c = color(0, 0, 200);
   int wire_size = 5;

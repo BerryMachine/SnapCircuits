@@ -1,3 +1,4 @@
+// Lightbulb class
 class Lightbulb extends Component {
   boolean on = false;
 

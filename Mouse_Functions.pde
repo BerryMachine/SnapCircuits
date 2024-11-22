@@ -1,3 +1,4 @@
+//Mouse functions
 void mouseMoved() {
   closest_point = getPoint(mouseX, mouseY);
 }
