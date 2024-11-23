@@ -1,23 +1,23 @@
-//Wire class
+// wire class
 class Wire extends Component {
-  //Fields 
+  // fields 
   color c = color(0, 0, 200);
   int wire_size = 5;
   
-  //Constructor 
+  // constructor 
   Wire (float x1, float y1) {
     super("wire", x1, y1);
     this.secondary_position = new PVector(x1, y1);
   }
   
-  //Methods 
-  
+  // draw wire
   void drawMe() {
     strokeWeight(wire_size);
     stroke(c);
     line(position.x, position.y, secondary_position.x, secondary_position.y);
   }
   
+  // check if clicked
   boolean checkContact (float x, float y) {
     float left, right, up, down;
     
@@ -63,6 +63,7 @@ class Wire extends Component {
     } else {return false;}
   }
   
+  // check if primary point has been clicked
   boolean checkContactPrimary (float x, float y) {
     if (position.x - wire_size < x 
      && position.x + wire_size > x
@@ -72,6 +73,7 @@ class Wire extends Component {
     } else {return false;}
   }
   
+  // check if secondary point has been clicked
   boolean checkContactSecondary (float x, float y) {
     if (secondary_position.x - wire_size < x 
      && secondary_position.x + wire_size > x
@@ -81,10 +83,12 @@ class Wire extends Component {
     } else {return false;}
   }
   
+  // update primary point position
   void movePrimary () {
     position = closest_point;
   }
 
+  // update secondary point position
   void moveSecondary () {
     secondary_position = closest_point;
   }

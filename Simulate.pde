@@ -1,9 +1,18 @@
-//Simulation
+// simulate an example circuit
 void draw_sim(){
-  //Setting up wire values
-  PVector[] wire_positions = {getPoint(grid_size*5, grid_size*6),getPoint(grid_size*10, grid_size*6),getPoint(grid_size*5, grid_size*4),getPoint(grid_size*10, grid_size*4),getPoint(grid_size*10, grid_size*4),getPoint(grid_size*10, grid_size*6),getPoint(grid_size*4, grid_size*4),getPoint(grid_size*4, grid_size*6)};
+  // set up simulation
+  PVector[] wire_positions = {
+    getPoint(grid_size*5, grid_size*6),
+    getPoint(grid_size*10, grid_size*6),
+    getPoint(grid_size*5, grid_size*4),
+    getPoint(grid_size*10, grid_size*4),
+    getPoint(grid_size*10, grid_size*4),
+    getPoint(grid_size*10, grid_size*6),
+    getPoint(grid_size*4, grid_size*4),
+    getPoint(grid_size*4, grid_size*6)
+  };
   
-  //Drawing simlation values
+  // create wires
   for(int i = 0; i<4; i++){
     selected_component = new Wire(wire_positions[i*2].x,wire_positions[i*2].y);
     selected_component.position = wire_positions[i*2];
@@ -11,14 +20,14 @@ void draw_sim(){
     selected_layer.add(selected_component);
   }
   
-  //battery
+  // battery
   closest = getPoint(grid_size*4, grid_size*4);
   
   selected_component = new Battery(closest.x, closest.y);  
 
   selected_layer.add(selected_component);
   
-  //LED
+  // LED
   closest = getPoint(grid_size*4, grid_size*6);
 
   selected_component = new Lightbulb(closest.x, closest.y);
@@ -27,51 +36,49 @@ void draw_sim(){
  
 }
 
-// Draw electricity flowing through circuit
-void electricity(){
-  fill(200,200,200);
+// simulate electricity flowing through circuit
+void electricity () {
   stroke(247,194,35);
   strokeWeight(1);
-  //PVector[] positions = new PVector[5];
-    int i = 0;
-
-    for(PVector pos:positions){
-      circle(pos.x,pos.y,5);
-      
-      //Changing the direction of the electrons once it hits a corner 
-      if (pos.x >= grid_size*10 && pos.y >= grid_size*4){
-        velocities.get(i).x = 0; 
-        velocities.get(i).y = 1; 
-       }
-       if(pos.y>=grid_size*6 && pos.x >=grid_size*10){
-        velocities.get(i).x = -1; 
-        velocities.get(i).y = 0; 
-       }
-       if (pos.x<= grid_size*4 && pos.y >= grid_size*6){
-        velocities.get(i).x = 0; 
-        velocities.get(i).y = -1; 
-       }
-       if (pos.x<= grid_size*4 && pos.y <= grid_size*4){
-        velocities.get(i).x = 1; 
-        velocities.get(i).y = 0; 
-       }
-       
-       //Animate
-       pos.add(velocities.get(i));
-       
-       i++;
-
   
-     }
+  int i = 0;
+
+  for(PVector pos : positions){
+    circle(pos.x,pos.y,5);
+    
+    // changing the direction of the electrons once it hits a corner 
+    if (pos.x >= grid_size*10 && pos.y >= grid_size*4){
+      velocities.get(i).x = 0; 
+      velocities.get(i).y = 1; 
+    }
+    if(pos.y>=grid_size*6 && pos.x >=grid_size*10){
+      velocities.get(i).x = -1; 
+      velocities.get(i).y = 0; 
+    }
+    if (pos.x<= grid_size*4 && pos.y >= grid_size*6){
+      velocities.get(i).x = 0; 
+      velocities.get(i).y = -1; 
+    }
+    if (pos.x<= grid_size*4 && pos.y <= grid_size*4){
+      velocities.get(i).x = 1; 
+      velocities.get(i).y = 0; 
+    }
      
-   //Initalizing the position and velocity of new electrons
-  if(frame%30==0 && frame<=26*30){
+    // animate
+    pos.add(velocities.get(i));
+     
+    i++;
+    
+  }
+     
+  // initalizing the position and velocity of new electrons
+  if (frame%30 == 0 && frame <= 26*30) {
     positions.add(new PVector(grid_size*4, grid_size*4));
     velocities.add(new PVector(1,0));
  
   }
   
-  //Filling the lightbulb
+  // turn lightbulb on
   if(frame>22*30){
     fill(247, 194, 35);
     
